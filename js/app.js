@@ -117,11 +117,10 @@ function createChart (){
   console.log(ImagesInstance.list.length, 'I am this long');
   for (var i = 0; i<ImagesInstance.list.length; i++){
     labels.push(ImagesInstance.list[i].name);
-    console.log('im hereeee');
     imgDisplayedTimes.push(ImagesInstance.list[i].numDisplayed);
     imgClickedTimes.push(ImagesInstance.list[i].numClicked);
   }
-  console.log(labels, 'labels');
+
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
