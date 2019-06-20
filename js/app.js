@@ -15,7 +15,7 @@ function ImagesInstance(name, filePath, description){
   ImagesInstance.list.push(this);
 }
 ImagesInstance.list = [];
-console.log(ImagesInstance.list);
+// console.log(ImagesInstance.list);
 
 new ImagesInstance('bag.jpg','./images/bag.jpg', 'Bag');
 new ImagesInstance('banana.jpg','./images/banana.jpg', 'Banana');
@@ -114,12 +114,56 @@ function createChart (){
   var labels = [];
   var imgDisplayedTimes =[];
   var imgClickedTimes =[];
-  console.log(ImagesInstance.list.length, 'I am this long');
+  // console.log(ImagesInstance.list.length, 'I am this long');
   for (var i = 0; i<ImagesInstance.list.length; i++){
     labels.push(ImagesInstance.list[i].name);
     imgDisplayedTimes.push(ImagesInstance.list[i].numDisplayed);
     imgClickedTimes.push(ImagesInstance.list[i].numClicked);
   }
+
+  // local storage part.
+  // increment displayed times
+  console.log(imgDisplayedTimes, 'before');
+
+  var stringImgDisplayedTimes= JSON.stringify(imgDisplayedTimes);
+
+  localStorage.setItem('number of times displayed' , stringImgDisplayedTimes);
+
+  var retrievedData = localStorage.getItem('number of times displayed');
+  var stringImgDisplayedTimes2 = JSON.parse(retrievedData);
+  if(stringImgDisplayedTimes2.length !== 0 ){
+
+    for(var j = 0; j < stringImgDisplayedTimes2.length; j++){
+      imgDisplayedTimes[i] = imgDisplayedTimes[i] + stringImgDisplayedTimes2[i];
+
+    }
+    localStorage.setItem('number of times displayed' , stringImgDisplayedTimes);
+    console.log(imgDisplayedTimes, 'after');
+  }
+
+  //increment clicked times..
+
+  console.log(stringImgDisplayedTimes2 , 'before');
+
+  var stringImgClickedTimes = JSON.stringify(imgClickedTimes);
+
+  localStorage.setItem('number of times clicked' , stringImgClickedTimes);
+
+  var retrieveData = localStorage.getItem('number of times clicked');
+  
+  var stringImgClickedTimes2 = JSON.parse(retrieveData);
+  if(stringImgClickedTimes2.length !== 0 ){
+
+    for(var k = 0; k < stringImgClickedTimes2.length; k++){
+      imgClickedTimes[i] = imgClickedTimes[i] + stringImgClickedTimes2[i];
+
+    }
+    localStorage.setItem('number of times clicked' , stringImgClickedTimes);
+    console.log(imgClickedTimes, 'after');
+  }
+  
+  //function to draw chart
+
 
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
