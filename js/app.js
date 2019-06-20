@@ -130,11 +130,11 @@ function createChart (){
   localStorage.setItem('number of times displayed' , stringImgDisplayedTimes);
 
   var retrievedData = localStorage.getItem('number of times displayed');
-  var stringImgDisplayedTimes2 = JSON.parse(retrievedData);
-  if(stringImgDisplayedTimes2.length !== 0 ){
+  var imgDisplayedTimes2 = JSON.parse(retrievedData);
+  if(imgDisplayedTimes2.length !== 0 ){
 
-    for(var j = 0; j < stringImgDisplayedTimes2.length; j++){
-      imgDisplayedTimes[i] = imgDisplayedTimes[i] + stringImgDisplayedTimes2[i];
+    for(var j = 0; j < imgDisplayedTimes2.length; j++){
+      imgDisplayedTimes[i] = imgDisplayedTimes[i] + imgDisplayedTimes2[i];
 
     }
     localStorage.setItem('number of times displayed' , stringImgDisplayedTimes);
@@ -143,7 +143,7 @@ function createChart (){
 
   //increment clicked times..
 
-  console.log(stringImgDisplayedTimes2 , 'before');
+  console.log(imgClickedTimes , 'before');
 
   var stringImgClickedTimes = JSON.stringify(imgClickedTimes);
 
@@ -151,11 +151,11 @@ function createChart (){
 
   var retrieveData = localStorage.getItem('number of times clicked');
   
-  var stringImgClickedTimes2 = JSON.parse(retrieveData);
-  if(stringImgClickedTimes2.length !== 0 ){
+  var imgClickedTimes2 = JSON.parse(retrieveData);
+  if(imgClickedTimes2.length !== 0 ){
 
-    for(var k = 0; k < stringImgClickedTimes2.length; k++){
-      imgClickedTimes[i] = imgClickedTimes[i] + stringImgClickedTimes2[i];
+    for(var k = 0; k < imgClickedTimes2.length; k++){
+      imgClickedTimes[i] = imgClickedTimes[i] + imgClickedTimes2[i];
 
     }
     localStorage.setItem('number of times clicked' , stringImgClickedTimes);
